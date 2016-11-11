@@ -271,9 +271,9 @@ func (e *edge) formatEdge(w io.Writer, level int) {
 	// Tab over once up to the edge's level
 	for i := 1; i <= level; i++ {
 		if i == level {
-			_, err = w.Write([]byte("`- "))
+			_, err = w.Write([]byte("|- "))
 		} else {
-			_, err = w.Write([]byte("   "))
+			_, err = w.Write([]byte("|  "))
 		}
 		check(err)
 	}
