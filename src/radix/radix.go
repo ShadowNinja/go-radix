@@ -10,7 +10,7 @@ type Tree struct {
 	root subtree
 }
 
-// New createa a empty radix tree and returns it.
+// New creates a empty radix tree and returns it.
 func New() *Tree {
 	m := new(Tree)
 	return m
@@ -185,14 +185,14 @@ func (m *Tree) remove(parent *edge, parentTree *subtree, e *edge, i int, prefix 
 		copy(children[i:], children[i+1:])
 		// ...and remove the last (now duplicate) element
 		parentTree.children = children[:len(children)-1]
-		// Merge edges.  That is, if we have a tree like this:
-		// Root [x]
+		// Merge edges.  That is, if we have a tree like this: ([x] indicates final)
+		// Root
 		// `- a [ ]
 		//    `- b [x]
 		//    `- c [x]
 		// If we remove "ac" then the tree can be compacted by
 		// merging the "a" and "b" edges into an "ab" edge like so:
-		// Root [x]
+		// Root
 		// `- ab [x]
 		// parent points to the "a" edge
 		if parent != nil && len(parentTree.children) == 1 && !parent.isFinal {
@@ -245,7 +245,7 @@ type edge struct {
 	// Final nodes: a final node is the last node in a series that makes up a
 	// string in the tree.  For example, for a tree with the strings "foobar"
 	// and "fooqux" you'll have: ([x] indicates final)
-	// Root [x]
+	// Root
 	//  `- foo [ ]
 	//     |- bar [x]
 	//     `- qux [x]
