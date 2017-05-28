@@ -51,7 +51,7 @@ func TestRadixRemove(t *testing.T) {
 		t.Error("font was removed")
 	}
 	if m.Remove("foo", false) {
-		t.Error("fo was removed (not final)")
+		t.Error("foo was removed (not final)")
 	}
 	if !m.Remove("fool", false) {
 		t.Error("fool wasn't removed")
